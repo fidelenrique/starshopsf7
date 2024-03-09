@@ -3,15 +3,18 @@
 namespace App\Controller;
 
 use App\Model\Starship;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use App\Repository\StarshipRepository;
 
 class StartshipApiController extends AbstractController
 {
     #[Route('/api/startships')]
-    public function getCollection(): Response
+    public function getCollection(LoggerInterface $logger, StarshipRepository $repository): Response
     {
+        $logger->info('Startship collection retrieved');
         $startships = [
             new Starship(1, 'USS LeafyCruiser (NCC-0001)', 'Garden', 'Jean-Luc Pickles', 'under construction'),
             new Starship(2, 'USS LeafyCruiser (NCC-0002)', 'Garden2', 'Jean-Luc Pickles2', 'under construction2'),
