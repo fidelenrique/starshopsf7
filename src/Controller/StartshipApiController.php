@@ -7,12 +7,12 @@ use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use App\Repository\StarshipRepository;
 
+#[Route('/api/startships')]
 class StartshipApiController extends AbstractController
 {
-    #[Route('/api/startships')]
-    public function getCollection(LoggerInterface $logger, StarshipRepository $repository): Response
+    #[Route('/')]
+    public function getCollection(LoggerInterface $logger): Response
     {
         $logger->info('Startship collection retrieved');
         $startships = [

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Starshop: Beam up some parts!{% endblock %}
+{% block title %}{{ parent() }} Starshop: Beam up some parts!{% endblock %}
 
 {% block body %}
 <h1>
@@ -16,12 +16,14 @@
     {% endif %}
 </div>
 <div>
-    <h2>My Ship</h2>
+    <h2>My Ship {{ myShip | length }}</h2>
     <table>
         // ... lines 20 - 27
         <tr>
             <th>Captain</th>
             <td>{{ myShip.captain|upper|lower|title }}</td>
+            <th>Name</th>
+            <td>{{ myShip.name|upper|lower|title }}</td>
         </tr>
         // ... lines 32 - 35
     </table>
