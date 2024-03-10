@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 #[Route('/api/products')]
 class ProductApiController extends AbstractController
 {
-    #[Route('/', name: 'get_all_products', methods: ['GET'])]
+    #[Route('/', name: 'get_api_all_products', methods: ['GET'])]
     public function getProducts(ProductRepository $productRepository, SerializerInterface $serializer): JsonResponse
     {
         $products = $productRepository->findAll();
@@ -23,7 +23,7 @@ class ProductApiController extends AbstractController
         return new JsonResponse($jsonContent, 200, [], true);
     }
 
-    #[Route('/{id<\d+>}', name: 'get_product', methods: ['GET'])]
+    #[Route('/{id<\d+>}', name: 'get_api_product', methods: ['GET'])]
     public function get(int $id, ProductRepository $productRepository, SerializerInterface $serializer): JsonResponse
     {
         $product = $productRepository->find($id);
