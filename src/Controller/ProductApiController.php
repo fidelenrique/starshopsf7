@@ -20,7 +20,11 @@ class ProductApiController extends AbstractController
 
         $jsonContent = $serializer->serialize($data, 'json');
         // Créer une réponse JSON
-        return new JsonResponse($jsonContent, 200, [], true);
+        $response = new JsonResponse($jsonContent, 200, [], true);
+        // Ajout de l'en-tête Access-Control-Allow-Origin
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        return $response;
     }
 
     #[Route('/{id<\d+>}', name: 'get_api_product', methods: ['GET'])]
